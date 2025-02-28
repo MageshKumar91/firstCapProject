@@ -1,0 +1,110 @@
+### Get Service Document
+http://localhost:4004/odata/v4/CatalogService
+
+### Get Service Metadata
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+###Get Employee Data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet 
+
+
+###
+http://localhost:4004/odata/v2/CatalogService/EmployeeSet 
+
+###Get Sigle Employee Data : TODO: take an id from last call and paste at end
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeSet/27642aae-a9c6-458f-828d-ca9c1d4eb8e4 
+
+###Insert data into employees
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+
+{
+  "nameFirst": "Magesh",
+  "nameMiddle": null,
+  "nameLast": "Kumar",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": null,
+  "email": "Magesh.Kumar@in.ey.com",
+  "loginName": "MAGESHK",
+  "Currency_code": "USD",
+  "salaryAmount": 76239,
+  "accountNumber": "9988776655",
+  "bankId": "121000358",
+  "bankName": "HDFC Bank",
+}
+
+
+### Update Data
+
+PATCH  http://localhost:4004/odata/v4/CatalogService/EmployeeSet/e1e4d521-f950-4ad2-82ca-cead98e54b07
+Content-Type: application/json
+
+{
+  "salaryAmount": 100000,
+  "Currency_code":"EUR"
+}
+
+### Get
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+
+### Delete Sachin Tendulkar
+
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/e1e4d521-f950-4ad2-82ca-cead98e54b07
+
+
+### Skip, top
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=3
+
+###filter
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=Currency_code eq 'USD'
+
+###
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=salaryAmount gt 100000 & Currency_code eq 'USD'
+
+###
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=contains(bankName,'Antioch')
+
+
+###Get All the Purchase orders
+http://localhost:4004/odata/v4/CatalogService/POs
+
+
+###Get single order
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC2A052?$expand=Items
+
+
+###Get CDS data for product
+http://localhost:4004/odata/v4/CatalogService/ProductView/74867AD200E41EDBA5D8B06B26EB4052?$expand=To_Items
+
+
+###Boost action
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC28052/boost
+Content-Type: application/json
+
+
+{}
+
+###Calling the functions
+http://localhost:4004/odata/v4/CatalogService/getLargestOrder()
+
+
+
+###
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+
+### Update Data
+
+PATCH  http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19787FB
+Content-Type: application/json
+
+{
+  "salaryAmount": 1000010,
+  "Currency_code":"EUR"
+}
+
+### custom entity in myservices
+http://localhost:4004/odata/v4/MyService/ReadEmployeeSrv
