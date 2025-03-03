@@ -7,8 +7,21 @@ using {CDSViews} from '../db/CDSViews';
 
 service CatalogService @(path: 'CatalogService') {
 
-    @readonly
-    entity EmployeeSet                      as projection on master.employees;
+    // @readonly
+    // entity EmployeeSet                      as projection on master.employees;
+
+    entity EmployeeSet @(restrict: [
+        {
+            grant: ['READ'],
+            to   : 'Viewer',
+            where: 'bankName = $user.BankName'
+        },
+        {
+            grant: ['WRITE'],
+            to   : 'Admin'
+        }
+    ])                                      as projection on master.employees;
+
 
     entity employees                        as projection on master.employees;
     entity BusinessPartnerSet               as projection on master.businesspartner;
