@@ -9,7 +9,7 @@ service CatalogService @(path: 'CatalogService') {
 
     // @readonly
     // entity EmployeeSet                      as projection on master.employees;
-
+    // test ci cd
     entity EmployeeSet @(restrict: [
         {
             grant: ['READ'],
